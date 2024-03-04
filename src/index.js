@@ -66,19 +66,25 @@ function Header() {
 }
 
 function Menu() {
-  const pizzas = pizzaData;
-  // const pizzas = [];
+  // const pizzas = pizzaData;
+  const pizzas = [];
   const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>our menu</h2>
 
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => {
-            return <Pizza pizzaObject={pizza} key={pizza.name} />;
-          })}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return <Pizza pizzaObject={pizza} key={pizza.name} />;
+            })}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu</p>
       )}
@@ -86,8 +92,7 @@ function Menu() {
   );
 }
 
-function Pizza({pizzaObject}) {
-
+function Pizza({ pizzaObject }) {
   if (pizzaObject.soldOut) return null;
 
   return (
@@ -125,10 +130,13 @@ function Footer(props) {
   );
 }
 
-const Order = ({closeHour, openHour}) => {
+const Order = ({ closeHour, openHour }) => {
   return (
     <div className="order">
-      <p>We're open from {openHour}:00 to {closeHour}:00, Come visit us or order online</p>
+      <p>
+        We're open from {openHour}:00 to {closeHour}:00, Come visit us or order
+        online
+      </p>
       <button className="btn">order</button>
     </div>
   );
