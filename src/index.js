@@ -66,8 +66,8 @@ function Header() {
 }
 
 function Menu() {
-  // const pizzas = pizzaData;
-  const pizzas = [];
+  const pizzas = pizzaData;
+  // const pizzas = [];
   const numPizzas = pizzas.length;
   return (
     <main className="menu">
@@ -93,16 +93,16 @@ function Menu() {
 }
 
 function Pizza({ pizzaObject }) {
-  if (pizzaObject.soldOut) return null;
+  // if (pizzaObject.soldOut) return null;
 
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObject.soldOut ? 'sold-out' : null}`}>
       <img src={pizzaObject.photoName} alt={pizzaObject.name}></img>
 
       <div>
         <h3>{pizzaObject.name}</h3>
         <p>{pizzaObject.ingredients}</p>
-        <span>{pizzaObject.price}</span>
+        <span>{pizzaObject.soldOut ? 'SOLD OUT' : pizzaObject.price}</span>
       </div>
     </li>
   );
