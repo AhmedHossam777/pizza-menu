@@ -66,36 +66,35 @@ function Header() {
 }
 
 function Menu() {
+  // const pizzas = pizzaData;
+  const pizzas = [];
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>our menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="pizzas/funghi.jpg"
-        price={12}
-      />
+
+      {numPizzas && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => {
+            return <Pizza pizzaObject={pizza} key={pizza.name} />;
+          })}
+        </ul>
+      )}
     </main>
   );
 }
 function Pizza(props) {
   console.log(props);
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name}></img>
+    <li className="pizza">
+      <img src={props.pizzaObject.photoName} alt={props.pizzaObject.name}></img>
 
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{props.pizzaObject.name}</h3>
+        <p>{props.pizzaObject.ingredients}</p>
+        <span>{props.pizzaObject.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -106,10 +105,16 @@ function Footer() {
   const isOpen = hours >= openHour && hours <= closeHour;
   console.log(isOpen);
 
-  // if (hours >= openHour && hours <= closeHour) alert('We are currently open!');
-  // else alert('Sorry we are closed!');
-
-  return <footer className="footer"> {hours}. We're currently open!</footer>;
+  return (
+    <footer className="footer">
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00, Come visit us or order online</p>
+          <button className="btn">order</button>
+        </div>
+      )}
+    </footer>
+  );
 }
 
 const root = ReactDom.createRoot(document.getElementById('root'));
