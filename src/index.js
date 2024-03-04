@@ -114,7 +114,7 @@ function Footer(props) {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           {' '}
@@ -125,10 +125,10 @@ function Footer(props) {
   );
 }
 
-const Order = (props) => {
+const Order = ({closeHour, openHour}) => {
   return (
     <div className="order">
-      <p>We're open until {props.closeHour}:00, Come visit us or order online</p>
+      <p>We're open from {openHour}:00 to {closeHour}:00, Come visit us or order online</p>
       <button className="btn">order</button>
     </div>
   );
