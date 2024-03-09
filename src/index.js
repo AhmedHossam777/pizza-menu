@@ -72,7 +72,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2>our menu</h2>
-
+      
       {numPizzas > 0 ? (
         <>
           <p>
@@ -94,11 +94,11 @@ function Menu() {
 
 function Pizza({ pizzaObject }) {
   // if (pizzaObject.soldOut) return null;
-
+  
   return (
     <li className={`pizza ${pizzaObject.soldOut ? 'sold-out' : null}`}>
       <img src={pizzaObject.photoName} alt={pizzaObject.name}></img>
-
+      
       <div>
         <h3>{pizzaObject.name}</h3>
         <p>{pizzaObject.ingredients}</p>
@@ -115,7 +115,7 @@ function Footer(props) {
   const closeHour = 22;
   const isOpen = hours >= openHour && hours <= closeHour;
   console.log(isOpen);
-
+  
   return (
     <footer className="footer">
       {isOpen ? (
